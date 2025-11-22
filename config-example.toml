@@ -8,12 +8,13 @@
 #                    /_/            
 
 # Configuration file
+# Make sure to rename this file to config.toml and set your actual API keys and Base URLs.
 
-poll_interval =  60 # In seconds
+poll_interval =  15 # In seconds
 
 [sonarr]
 enabled = true
-url = "http://localhost:8989"
+base_url = "http://localhost:8989"
 api_key = "SET_ME_DUMMY"
 remove_from_client = true # removes the download from the download client when removing from the queue
 
@@ -37,5 +38,3 @@ import_pending = "no_action"
 
 [radarr]
 enabled = false
-url = "http://localhost:7878"
-api_key = "SET_ME_DUMMY"
