@@ -1,0 +1,41 @@
+
+
+#     ____                                 
+#    / __ )__  ______ ___  ____  __________
+#   / __  / / / / __ `__ \/ __ \/ ___/ ___/
+#  / /_/ / /_/ / / / / / / /_/ / /  / /    
+# /_____/\__,_/_/ /_/ /_/ .___/_/  /_/     
+#                    /_/            
+
+# Configuration file
+
+poll_interval =  60 # In seconds
+
+[sonarr]
+enabled = true
+url = "http://localhost:8989"
+api_key = "SET_ME_DUMMY"
+remove_from_client = true # removes the download from the download client when removing from the queue
+
+
+# Actions:
+# no_action - Do nothing
+# blocklist - Add the release to the blocklist, removes from queue, but does not search
+# blocklist_and_search - Add the release to the blocklist, removes from queue, and starts a new search
+# refresh_and_redownload - Remove from queue, Refresh the series info and start a new search without blocklisting
+
+[sonarr.action_default] # Only applies if the more specific message rules below do not match
+import_blocked = "blocklist_and_search"
+import_pending = "no_action"
+
+[sonarr.import_pending_messages]
+"Found potentially dangerous file" = "blocklist_and_search"
+"Single episode file contains all episodes in seasons" = "blocklist_and_search"
+"Episode has a TBA title and recently aired" = "refresh_and_redownload"
+"Unable to determine if file is a sample" = "blocklist_and_search"
+"Found archive file, might need to be extracted" = "blocklist_and_search"
+
+[radarr]
+enabled = false
+url = "http://localhost:7878"
+api_key = "SET_ME_DUMMY"
