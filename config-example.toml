@@ -8,7 +8,6 @@
 #                    /_/            
 
 # Configuration file
-# Make sure to rename this file to config.toml and set your actual API keys and Base URLs.
 
 poll_interval =  15 # In seconds
 
@@ -21,20 +20,28 @@ remove_from_client = true # removes the download from the download client when r
 
 # Actions:
 # no_action - Do nothing
+# remove - Remove the release from the queue without further action
 # blocklist - Add the release to the blocklist, removes from queue, but does not search
 # blocklist_and_search - Add the release to the blocklist, removes from queue, and starts a new search
 # refresh_and_redownload - Remove from queue, Refresh the series info and start a new search without blocklisting
 
+# Uses camelCase for action names as that's how they are represented in the API
 [sonarr.action_default] # Only applies if the more specific message rules below do not match
-import_blocked = "blocklist_and_search"
-import_pending = "no_action"
+importBlocked = "blocklist_and_search"
+importPending = "no_action"
 
-[sonarr.import_pending_messages]
+[sonarr.importPending_messages]
 "Found potentially dangerous file" = "blocklist_and_search"
 "Single episode file contains all episodes in seasons" = "blocklist_and_search"
 "Episode has a TBA title and recently aired" = "refresh_and_redownload"
 "Unable to determine if file is a sample" = "blocklist_and_search"
 "Found archive file, might need to be extracted" = "blocklist_and_search"
+"Not an upgrade for existing episode file(s)" = "remove"
 
 [radarr]
 enabled = false
+
+
+[notifications.discord]
+enabled = true
+webhook_url = "SET_ME_DUMMY"
