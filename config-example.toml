@@ -37,6 +37,7 @@ importPending = "no_action"
 "Unable to determine if file is a sample" = "blocklist_and_search"
 "Found archive file, might need to be extracted" = "blocklist_and_search"
 "Not an upgrade for existing episode file(s)" = "remove"
+"Series title mismatch" = "blocklist_and_search"
 
 [radarr]
 enabled = false
