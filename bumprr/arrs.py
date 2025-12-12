@@ -26,7 +26,7 @@ def test_and_set_api_version(service_name):
 
 def fetch_queue(service_name):
   print(f"Fetching {service_name.capitalize()} queue...")
-  queue = fetch_data(service_name, 'queue', params={'pageSize': 100000000})
+  queue = fetch_data(service_name, 'queue', params={'pageSize': 100000000, 'includeUnknownSeriesItems': 'true'})
   print(f"Fetched {len(queue.get('records', []))} items from {service_name.capitalize()} queue.")
   return queue.get('records', [])
 
